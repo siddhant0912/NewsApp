@@ -1,6 +1,6 @@
 package com.androiddevs.mvvmnewsapp.api
 
-import com.androiddevs.mvvmnewsapp.NewsResponse
+import com.androiddevs.mvvmnewsapp.models.NewsResponse
 import com.androiddevs.mvvmnewsapp.util.Constants.Companion.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
@@ -10,10 +10,10 @@ interface NewsAPI {
     @GET("v2/top-headlines")
     suspend fun getBreakingNews(
         @Query("country")
-        countryCode:String ="India",
+        countryCode:String ="in",
         @Query("page")
         pageNumber:Int =1,
-        @Query("api key")
+        @Query("apikey")
         apiKey:String =API_KEY
     ): Response<NewsResponse>
 
@@ -23,7 +23,7 @@ interface NewsAPI {
         searchquery:String,
         @Query("page")
         pageNumber:Int =1,
-        @Query("api key")
+        @Query("apikey")
         apiKey:String =API_KEY
     ): Response<NewsResponse>
 
