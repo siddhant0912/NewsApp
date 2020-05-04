@@ -1,10 +1,10 @@
 package com.androiddevs.mvvmnewsapp.Adapter
 
-import android.text.Layout
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
+import android.widget.Toast
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +12,7 @@ import com.androiddevs.mvvmnewsapp.R
 import com.androiddevs.mvvmnewsapp.models.Article
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_article_preview.view.*
+
 
 class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder> () {
 
@@ -36,6 +37,7 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder> () {
     override fun getItemCount(): Int {
         return  differ.currentList.size
     }
+    private var OnItemClickListener: ((Article)-> Unit)? = null
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
     val article =differ.currentList[position]
@@ -45,12 +47,11 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder> () {
             tvTitle.text =article.title
             tvDescription.text =article.description
             tvPublishedAt.text = article.publishedAt
-            setOnItemClickListener {
+            setOnClickListener {
                 OnItemClickListener?.let { it(article) }
             }
         }
     }
-    private var OnItemClickListener: ((Article)-> Unit) ?= null
     fun setOnItemClickListener(listener:(Article)->Unit){
         OnItemClickListener = listener
     }

@@ -42,9 +42,9 @@
     <fragment
         android:id="@+id/articleFragment"
         android:name="com.androiddevs.mvvmnewsapp.ui.fragments.ArticleFragment"
-        android:label="ArticleFragment"
-        app:enterAnim="@anim/slide_in_right"
-        app:exitAnim="@anim/slide_in_left"
-        app:popEnterAnim="@anim/slide_in_left"
-        app:popExitAnim="@anim/slide_in_right"/>
+        android:label="ArticleFragment">
+        <argument
+            android:name="article"
+            app:argType="com.androiddevs.mvvmnewsapp.models.Article" />
+    </fragment>
 </navigation>
